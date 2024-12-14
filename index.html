@@ -69,7 +69,7 @@
                         </p>
                         <div class="card__control">
                             <button class="card__control-button card__control-button__delete"></button>
-                            <span class="card__control-count card__control-count__bad">-10</span>
+                            <span class="card__control-count">0</span>
                             <button class="card__control-button card__control-button__add"></button>
                         </div>
                         <ul class="card__comment-list">
@@ -109,7 +109,7 @@
                         </p>
                         <div class="card__control">
                             <button class="card__control-button card__control-button__delete"></button>
-                            <span class="card__control-count card__control-count__good">+1</span>
+                            <span class="card__control-count">0</span>
                             <button class="card__control-button card__control-button__add"></button>
                         </div>
                         <ul class="card__comment-list">
@@ -149,7 +149,7 @@
                         </p>
                         <div class="card__control">
                             <button class="card__control-button card__control-button__delete"></button>
-                            <span class="card__control-count card__control-count__good">+1</span>
+                            <span class="card__control-count">0</span>
                             <button class="card__control-button card__control-button__add"></button>
                         </div>
                         <ul class="card__comment-list">
@@ -182,3 +182,45 @@
     </main>
 </body>
 </html>
+
+<script>
+    const card = document.querySelectorAll('.card');
+    
+    
+    card.forEach((item) => {
+        const buttonMinus = item.querySelector('.card__control-button__delete');
+        const buttonPlus = item.querySelector('.card__control-button__add');
+        const counterValue = item.querySelector('.card__control-count');
+        let counter = 0;
+        
+        buttonMinus.addEventListener('click', () => {
+            counter--;
+            counterValue.innerHTML = counter;
+
+            if(counter < 0) {
+                counterValue.classList.remove('card__control-count__good')
+                counterValue.classList.add('card__control-count__bad')
+            } else if (counter === 0) {
+                counterValue.classList.remove('card__control-count__bad')
+                counterValue.classList.remove('card__control-count__good')
+            }
+        })
+
+        buttonPlus.addEventListener('click', () => {
+            counter++;
+            counterValue.innerHTML = counter;
+
+            if(counter > 0) {
+                counterValue.classList.remove('card__control-count__bad')
+                counterValue.classList.add('card__control-count__good')
+            } else if (counter === 0) {
+                counterValue.classList.remove('card__control-count__bad')
+                counterValue.classList.remove('card__control-count__good')
+            }
+        })
+
+        
+
+        console.log(counter)
+    })
+</script>
