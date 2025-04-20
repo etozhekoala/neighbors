@@ -11,11 +11,8 @@
         <section class="section">
             <div class="container">
                 <h1 class="title-page">
-                    Рейтинг соседей
+                    Рейтинг друзей
                 </h1>
-                <p class="address">
-                    Фермское шоссе 20 к2
-                </p>
                 <ul class="cards-list">
                     <li class="card">
                         <div class="card__image-wrapper">
@@ -179,13 +176,57 @@
                 </ul>
             </div>
         </section>
+        <section class="popup">
+            <div class="popup__block">
+                <button class="popup__close"></button>
+                <h2 class="popup__title">
+                    Обоснуй свою оценку
+                </h2>
+                <form name="popupForm" class="popup__form" action="">
+                    <div class="popup__inputs-wrapper">
+                        <div class="popup__dropdown">
+                            <div class="popup__input popup__input-header">
+                                <span class="popup__input-label">Ты кто?</span>
+                                <div class="popup__input-arrow popup__input-arrow_active"></div>
+                            </div>
+                            <ul class="popup__input-body">
+                                <li class="popup__input-item">Тилик</li>
+                                <li class="popup__input-item">Темик</li>
+                                <li class="popup__input-item">Ирэн</li>
+                                <li class="popup__input-item">Татьян</li>
+                            </ul>
+                        </div>
+                        <textarea 
+                            class="popup__input popup__input_comment"
+                            placeholder="Ну давай..."></textarea>
+                    </div>
+                    <span class="popup__error">
+                        Ты долбаеб? Тут всего 2 формы и ты не можешь их все заполнить????
+                    </span>
+                    <button type="submit" class="popup__submit">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </section>
     </main>
 </body>
 </html>
 
 <script>
     const card = document.querySelectorAll('.card');
+    const popup = document.querySelector('.popup');
+    const popupCloseButton = document.querySelector('.popup__close');
+
+    const popupDropdown = document.querySelector('.popup__dropdown')
+
+    function popupOpen () {
+        popup.classList.add('popup_show');
+    }
     
+    function popupClose () {
+        popup.classList.remove('popup_show');
+    }
     
     card.forEach((item) => {
         const buttonMinus = item.querySelector('.card__control-button__delete');
@@ -194,6 +235,7 @@
         let counter = 0;
         
         buttonMinus.addEventListener('click', () => {
+            popupOpen();
             counter--;
             counterValue.innerHTML = counter;
 
@@ -207,6 +249,7 @@
         })
 
         buttonPlus.addEventListener('click', () => {
+            popupOpen();
             counter++;
             counterValue.innerHTML = counter;
 
@@ -219,8 +262,13 @@
             }
         })
 
-        
+        popupCloseButton.addEventListener('click', () => {
+            popupClose();
+        })
 
-        console.log(counter)
+        popupDropdown.addEventListener('click', () => {
+                popupDropdown.classList.add('popup__dropdown_open')
+        })
+
     })
 </script>
