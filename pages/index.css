@@ -285,6 +285,10 @@
     color: rgba(0, 0, 0, .4);
 }
 
+.popup__input-header__change .popup__input-label {
+    color: rgba(0, 0, 0, .82);
+}
+
 .popup__input-arrow {
     position: absolute;
     top: 50%;
@@ -293,9 +297,11 @@
     width: 24px;
     height: 24px;
     background: url('../images/popup-arrow.svg');
+    transition: background .1s linear, transform .1s linear;
 }
 
-.popup__input-arrow_active {
+.popup__dropdown_open .popup__input-arrow {
+    transform: translateY(-50%) rotate(180deg);
     background: url('../images/popup-arrow--black.svg');
 }
 
@@ -338,12 +344,13 @@
 }
 
 .popup__error {
+    display: none;
     font: 400 14px/18px 'Inter', sans-serif;
     color: #CA1919;
 }
 
-.popup__error--hide {
-    display: none;
+.popup__error--show {
+    display: block;
 }
 
 .popup__submit {
