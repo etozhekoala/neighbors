@@ -328,7 +328,6 @@
 
 .popup__input-item {
     cursor: pointer;
-    width: fit-content;
     font: 400 16px/21px 'Roboto', sans-serif;
     color: rgba(0, 0, 0, .82);
     transition: opacity .3s ease;
